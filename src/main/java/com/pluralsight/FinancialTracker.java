@@ -76,24 +76,33 @@ public class FinancialTracker {
             System.out.println("Deposit Selection Screen");
             System.out.println("----------------------------------------");
 
-            // User Date Input
+            // User Date Input with try/catch & loop if user doesn't enter correct input
+            LocalDate depositDateInput = null;
             System.out.print("Please enter date of Deposit (YYYY-MM-dd): ");
-            String dateInput = scanner.nextLine();
-                // Conversion of String to Date
-                LocalDate depositDateInput = LocalDate.parse(dateInput);
+            while (depositDateInput == null) {
+                try {
+                    String dateInput = scanner.nextLine();
+                    // Conversion of String to Date
+                    depositDateInput = LocalDate.parse(dateInput);
+                } catch (Exception e) {
+                    System.err.print("Entered incorrect date format.\nPlease Enter in format (YYYY-MM-dd): ");
+                }
+            }
 
             // User Time Entry
+            LocalTime depositTimeInput = null;
             System.out.print("Please enter time of Deposit (HH:mm:ss): ");
-            String timeInput = scanner.nextLine();
-                // Conversion of String to Time
-                LocalTime depositTimeInput = LocalTime.parse(timeInput);
+            while (depositTimeInput == null)
+                String timeInput = scanner.nextLine();
+                    // Conversion of String to Time
+                    depositTimeInput = LocalTime.parse(timeInput);
 
             // User Description Entry
             System.out.print("Please enter item that was purchased: ");
             String descriptionInput = scanner.nextLine();
 
             // User Vendor Entry
-            System.out.print("Please enter the vendor that item was purchased: ");
+            System.out.print("Please enter the vendor that item was purchased from: ");
             String vendorInput = scanner.nextLine();
 
             // User Amount Entry
