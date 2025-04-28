@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,14 +21,18 @@ public class FinancialTracker {
         boolean running = true;
 
         while (running) {
-            System.out.println("Welcome to TransactionApp");
-            System.out.println("Choose an option:");
+            System.out.println("\nWelcome to TransactionApp");
+            System.out.println("----------------------------------------");
+            System.out.println("Choose an option by entering one of the corresponding letters: ");
             System.out.println("D) Add Deposit");
             System.out.println("P) Make Payment (Debit)");
             System.out.println("L) Ledger");
             System.out.println("X) Exit");
-
+            System.out.print("Enter Here: ");
             String input = scanner.nextLine().trim();
+            System.out.println("----------------------------------------");
+
+
 
             switch (input.toUpperCase()) {
                 case "D":
@@ -66,9 +71,47 @@ public class FinancialTracker {
     private static void addDeposit(Scanner scanner) {
         // This method should prompt the user to enter the date, time, description, vendor, and amount of a deposit.
         // The user should enter the date and time in the following format: yyyy-MM-dd HH:mm:ss
-        // The amount should be a positive number.
-        // After validating the input, a new `Transaction` object should be created with the entered values.
-        // The new deposit should be added to the `transactions` ArrayList.
+        try {
+            // Deposit Selection Screen
+            System.out.println("Deposit Selection Screen");
+            System.out.println("----------------------------------------");
+
+            // User Date Input
+            System.out.print("Please enter date of Deposit (YYYY-MM-dd): ");
+            String dateInput = scanner.nextLine();
+                // Conversion of String to Date
+                LocalDate depositDateInput = LocalDate.parse(dateInput);
+
+            // User Time Entry
+            System.out.print("Please enter time of Deposit (HH:mm:ss): ");
+            String timeInput = scanner.nextLine();
+                // Conversion of String to Time
+                LocalTime depositTimeInput = LocalTime.parse(timeInput);
+
+            // User Description Entry
+            System.out.print("Please enter item that was purchased: ");
+            String descriptionInput = scanner.nextLine();
+
+            // User Vendor Entry
+            System.out.print("Please enter the vendor that item was purchased: ");
+            String vendorInput = scanner.nextLine();
+
+            // User Amount Entry
+            System.out.print("Please enter the amount that was used for the purchase: ");
+            double amountInput = scanner.nextDouble();
+            scanner.nextLine(); // scanner eater
+            while (amountInput < 0) {
+                System.err.println("You entered a negative number");
+                break;
+            }
+
+            // The amount should be a positive number.
+            // After validating the input, a new `Transaction` object should be created with the entered values.
+            // The new deposit should be added to the `transactions` ArrayList.
+        } catch (Exception e) {
+            System.err.println("Incorrect Input: Returning to Deposit Selection Screen...");
+        }
+
     }
 
     //Do This First
@@ -208,7 +251,6 @@ public class FinancialTracker {
         * User Stories should take half a day (2 Hours)
         * Hint: In Transaction date should be Local
         * Do ReadME at the END
-
 
      */
 }
