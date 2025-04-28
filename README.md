@@ -20,7 +20,7 @@ so that I can quickly access the specific part of the tool I need without confus
 
 - As a user, I would like the Add Deposits option to prompt me for relevant information—such as date, amount, description, and vendor— 
 and automatically store this data in a structured CSV file; so that I can maintain an organized digital record, 
-easily retrieve and review my financial entries later, and ensure comprehensive tracking of all deposit activity over time.
+easily retrieve and review my financial entries later, and ensure comprehensive tracking of all deposit activity over time..
 
 - As a user, I would like the Make Payments option to ask me for my debit information and save it for later use
 so that I can have better ease of use long term.
