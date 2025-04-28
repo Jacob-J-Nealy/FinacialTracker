@@ -2,7 +2,10 @@
 
 ## A CLI Application that tracks Income and Expense & allows the user the ability to custom search for specific entries. 
 
-Briefly describe what this Java console application does. Mention its purpose and who the intended users are. Explain the main functionality and what problems it aims to solve.
+This application tracks user-entered deposits and allows users to make payments with their debit information
+It also includes a custom search feature for finding specific entries based on Month, Year, or Vendor. 
+I'm also planning to expand the search functionality by adding filters for description, vendor, amount spent, and purchase date.
+But...let's see if we get to that!
 
 ![Class Diagram](path/to/your/class_diagram.png)
 
