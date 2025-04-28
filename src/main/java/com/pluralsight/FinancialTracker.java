@@ -62,6 +62,7 @@ public class FinancialTracker {
         // If any errors occur, an appropriate error message should be displayed.
     }
 
+    // Do This First
     private static void addDeposit(Scanner scanner) {
         // This method should prompt the user to enter the date, time, description, vendor, and amount of a deposit.
         // The user should enter the date and time in the following format: yyyy-MM-dd HH:mm:ss
@@ -70,6 +71,7 @@ public class FinancialTracker {
         // The new deposit should be added to the `transactions` ArrayList.
     }
 
+    //Do This First
     private static void addPayment(Scanner scanner) {
         // This method should prompt the user to enter the date, time, description, vendor, and amount of a payment.
         // The user should enter the date and time in the following format: yyyy-MM-dd HH:mm:ss
@@ -78,6 +80,7 @@ public class FinancialTracker {
         // The new payment should be added to the `transactions` ArrayList.
     }
 
+    // Second
     private static void ledgerMenu(Scanner scanner) {
         boolean running = true;
         while (running) {
@@ -128,6 +131,7 @@ public class FinancialTracker {
         // The table should have columns for date, time, description, vendor, and amount.
     }
 
+    // Third Reports Menu
     private static void reportsMenu(Scanner scanner) {
         boolean running = true;
         while (running) {
@@ -184,4 +188,18 @@ public class FinancialTracker {
         // Transactions with a matching vendor name are printed to the console.
         // If no transactions match the specified vendor name, the method prints a message indicating that there are no results.
     }
+
+    /*
+    Notes with Walter 4.28.25
+    __________________________________________
+    First Problem:  Saving transaction to csv file (payments and deposits)
+    Second Problem: Displaying Ledger Properly
+        * In real Life you start with User Stories
+        * Work on ReadMe throughout Progress
+            - Changing constantly
+            -
+        * Finish Add Deposit and Make Payments
+
+
+     */
 }

@@ -7,9 +7,13 @@ It also includes a custom search feature for finding specific entries based on M
 I'm also planning to expand the search functionality by adding filters for description, vendor, amount spent, and purchase date.
 But...let's see if we get to that!
 
-![Class Diagram](path/to/your/class_diagram.png)
+![Class Diagram](C:\Users\jacob\Desktop\pluralsight\capstones\FinancialTracker)
 
 ## User Stories
+Throughout the development of this application, these User Stories played a role in shaping my process and decisions. 
+They served as a roadmap, helping me stay focused on creating features that would truly meet user needs. 
+Each story has details for how I wanted to build an application intuitive, functional, and user-friendly experience. 
+I'm excited to share how these User Stories guided the evolution of the application and brought the vision to life!
 
 List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
 
