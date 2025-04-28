@@ -1,6 +1,6 @@
-# Project Title
+# Financial Tracker
 
-## Description of the Project
+## A CLI Application that tracks Income and Expense & allows the user the ability to custom search for specific entries. 
 
 Briefly describe what this Java console application does. Mention its purpose and who the intended users are. Explain the main functionality and what problems it aims to solve.
 
