@@ -15,10 +15,23 @@ They served as a roadmap, helping me stay focused on creating features that woul
 Each story has details for how I wanted to build an application intuitive, functional, and user-friendly experience. 
 I'm excited to share how these User Stories guided the evolution of the application and brought the vision to life!
 
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
+- As a user, I would like a clean and simple home screen where I can easily Add Deposits, Make Payments, View the Ledger, and Exit the Application; 
+so that I can quickly access the specific part of the tool I need without confusion, save time navigating, and manage my finances more efficiently.
 
-- As a user, I want to be able to input my data, so that the application can process it accordingly.
-- As a user, I want to receive immediate feedback, so I can understand what to do next.
+- As a user, I would like the Add Deposits option to prompt me for relevant information—such as date, amount, description, and vendor— 
+and automatically store this data in a structured CSV file; so that I can maintain an organized digital record, 
+easily retrieve and review my financial entries later, and ensure comprehensive tracking of all deposit activity over time.
+
+- As a user, I would like the Make Payments option to ask me for my debit information and save it for later use
+so that I can have better ease of use long term.
+
+- As a user, I would a simple exit button on the home screen to close out the application when I am done with it
+
+- As a user, I would like a Ledger Option that displays all my newest entries first with the option to 
+  * Display All Entries; 
+  * Display Deposits Only; 
+  * Display Payments Only; 
+  * Display Reports: which allows me to run a custom search by specific attributes
 
 ## Setup
 

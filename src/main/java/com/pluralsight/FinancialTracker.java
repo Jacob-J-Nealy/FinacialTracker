@@ -190,6 +190,7 @@ public class FinancialTracker {
     }
 
     /*
+
     Notes with Walter 4.28.25
     __________________________________________
     First Problem:  Saving transaction to csv file (payments and deposits)
@@ -199,6 +200,14 @@ public class FinancialTracker {
             - Changing constantly
             -
         * Finish Add Deposit and Make Payments
+
+    Notes with Raymond 4.28.25
+    ___________________________________________
+        * Mid-Thursday Capstone should be done
+        * We are going to work with Dates
+        * User Stories should take half a day (2 Hours)
+        * Hint: In Transaction date should be Local
+        * Do ReadME at the END
 
 
      */
