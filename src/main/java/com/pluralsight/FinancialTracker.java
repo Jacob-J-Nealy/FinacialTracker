@@ -19,7 +19,7 @@ public class FinancialTracker {
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern(TIME_FORMAT);
 
     public static void main(String[] args) {
-        loadTransactions("transactions.csv");
+        loadTransactions(FILE_NAME);
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
@@ -63,7 +63,7 @@ public class FinancialTracker {
         String line;
 
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("transactions.csv"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_NAME));
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\\|");
                 LocalDate date = LocalDate.parse(parts[0]);
@@ -73,7 +73,7 @@ public class FinancialTracker {
                 double amount = Double.parseDouble(parts[4]);
                 allTransactions.add(new Transaction(date, time, description, vendor, amount));
             }
-            System.out.println(allTransactions);
+            // Close Buffered Reader
         } catch (Exception e) {
             System.err.println("ERROR");
         }
@@ -106,6 +106,7 @@ public class FinancialTracker {
                 try {
                     String dateInput = scanner.nextLine();
                     // Conversion of String to Date
+                    // Format Date Here use date time formatter
                     depositDateInput = LocalDate.parse(dateInput);
                 } catch (Exception e) {
                     System.err.print("Entered incorrect date format.\nPlease Enter in format (YYYY-MM-dd): ");
@@ -153,9 +154,11 @@ public class FinancialTracker {
             // The new deposit should be added to the `transactions` ArrayList.
 
             Transaction transaction = new Transaction(depositDateInput, depositTimeInput, descriptionInput, vendorInput, amountInput);
+            allTransactions.add(transaction);
+
             String csvTransaction = null;
 
-            csvTransaction = transaction.getDate(),
+
 
 
         } catch (Exception e) {
