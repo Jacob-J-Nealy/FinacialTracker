@@ -1,15 +1,17 @@
 package com.pluralsight;
 
-public class Transaction {
+import java.time.LocalDate;
+import java.time.LocalTime;
 
-    private String date;
-    private String time;
+public class Transaction {
+    private LocalDate date;
+    private LocalTime time;
     private String description;
     private String vendor;
     private double amount;
 
     // Constructor
-    public Transaction(String date, String time, String description, String vendor, double amount) {
+    public Transaction(LocalDate date, LocalTime time, String vendor, String description, double amount) {
         this.date = date;
         this.time = time;
         this.description = description;
@@ -17,6 +19,7 @@ public class Transaction {
         this.amount = amount;
     }
 
+    // toString OG Way
     /* //toString (Normal Generated toString)
     @Override
     public String toString() {
@@ -33,30 +36,38 @@ public class Transaction {
     @Override
     public String toString() {
 
-            StringBuilder transactionBuilder = new StringBuilder();
-            transactionBuilder.append(date);
-            transactionBuilder.append("|");
-            transactionBuilder.append(time);
-            transactionBuilder.append("|");
-            transactionBuilder.append(description);
-            transactionBuilder.append("|");
-            transactionBuilder.append(vendor);
-            transactionBuilder.append("|");
-            transactionBuilder.append(amount);
+        StringBuilder transactionBuilder = new StringBuilder();
+        transactionBuilder.append(date);
+        transactionBuilder.append("|");
+        transactionBuilder.append(time);
+        transactionBuilder.append("|");
+        transactionBuilder.append(description);
+        transactionBuilder.append("|");
+        transactionBuilder.append(vendor);
+        transactionBuilder.append("|");
+        transactionBuilder.append(amount);
 
-            //transactionBuilder.toString();
+        //transactionBuilder.toString();
 
-            // advanced way
-            return String.format("%s|%s|%s|%s|%s",date,time,description,vendor,amount);
-        }
+        // advanced way
+        return String.format("%s|%s|%s|%s|%s", date, time, description, vendor, amount);
+    }
 
     // Getters & Setters
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public String getVendor() {
@@ -75,19 +86,13 @@ public class Transaction {
         this.description = description;
     }
 
-    public String getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
 }
+
+

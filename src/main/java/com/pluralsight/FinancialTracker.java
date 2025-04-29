@@ -66,8 +66,8 @@ public class FinancialTracker {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("transactions.csv"));
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\\|");
-                String date = parts[0];
-                String time = parts[1];
+                LocalDate date = LocalDate.parse(parts[0]);
+                LocalTime time = LocalTime.parse(parts[1]);
                 String description = parts[2];
                 String vendor = parts[3];
                 double amount = Double.parseDouble(parts[4]);
@@ -146,12 +146,22 @@ public class FinancialTracker {
                     scanner.nextLine(); // scanner eater
                 }
             }
+
+
             // The amount should be a positive number.
             // After validating the input, a new `Transaction` object should be created with the entered values.
             // The new deposit should be added to the `transactions` ArrayList.
+
+            Transaction transaction = new Transaction(depositDateInput, depositTimeInput, descriptionInput, vendorInput, amountInput);
+            String csvTransaction = null;
+
+            csvTransaction = transaction.getDate(),
+
+
         } catch (Exception e) {
             System.err.println("Incorrect Input: Returning to Deposit Selection Screen...");
         }
+
 
     }
 
@@ -164,58 +174,62 @@ public class FinancialTracker {
         // The new payment should be added to the `transactions` ArrayList.
 
         try {
-            // Deposit Selection Screen
+            // Payment Selection Screen
             System.out.println("Payment Selection Screen");
             System.out.println("----------------------------------------");
 
             // User Date Input with try/catch & loop if user doesn't enter correct input
             LocalDate paymentDateInput = null;
-            System.out.print("Please enter date of Deposit (YYYY-MM-dd): ");
+            System.out.print("Please enter date of Payment (YYYY-MM-dd): ");
             while (paymentDateInput == null) {
                 try {
                     String dateInput = scanner.nextLine();
                     // Conversion of String to Date
-                    depositDateInput = LocalDate.parse(dateInput);
+                    paymentDateInput = LocalDate.parse(dateInput);
                 } catch (Exception e) {
                     System.err.print("Entered incorrect date format.\nPlease Enter in format (YYYY-MM-dd): ");
                 }
             }
 
             // User Time Entry
-            LocalTime depositTimeInput = null;
-            System.out.print("Please enter time of Deposit (HH:mm:ss): ");
-            while (depositTimeInput == null)
+            LocalTime paymentTimeInput = null;
+            System.out.print("Please enter time of Payment (HH:mm:ss): ");
+            while (paymentTimeInput == null)
                 try {
                     String timeInput = scanner.nextLine();
                     // Conversion of String to Time
-                    depositTimeInput = LocalTime.parse(timeInput);
+                    paymentTimeInput = LocalTime.parse(timeInput);
                 } catch (Exception e) {
                     System.err.print("Entered incorrect time format.\nPlease Enter in format ((HH:mm:ss): ");
                 }
 
             // User Description Entry
-            System.out.print("Please enter invoice description for deposit: ");
+            System.out.print("Please enter name of item paid for: ");
             String descriptionInput = scanner.nextLine();
 
             // User Vendor Entry
-            System.out.print("Please enter the name of person depositing that item was purchased from: ");
+            System.out.print("Please enter the vendor name: ");
             String vendorInput = scanner.nextLine();
 
-            // User Amount Entry
+            // User Amount Entry (COME BACK
             double amountInput = 0;
-            System.out.print("Please enter the amount to deposit: ");
-            while (amountInput <= 0) {
+            System.out.print("Please enter a negative payment amount : ");
+            while (amountInput >= 0) {
                 try {
                     amountInput = scanner.nextDouble();
-                    if (amountInput <= 0) {
-                        System.out.println("Amount must be greater than 0 please try again: ");
+                    if (amountInput >= 0) {
+                        System.out.println("Amount must be less than 0 remember to add negative. please try again: ");
                     }
                 } catch (Exception e) {
                     System.err.print("Invalid Input. Please enter amount here: ");
                     scanner.nextLine(); // scanner eater
                 }
             }
+        } catch (Exception e) {
+            System.err.println("ERROR");
+        }
     }
+
 
     // Second
     private static void ledgerMenu(Scanner scanner) {
@@ -345,6 +359,14 @@ public class FinancialTracker {
         * User Stories should take half a day (2 Hours)
         * Hint: In Transaction date should be Local
         * Do ReadME at the END
+
+    Notes with Walter 4.29.25
+    ________________________________________________
+        * Extra Bonus to combine Deposit and Payment Method using If Else Statement
+        * Store in the Object in Array List
+        * Use FileWriter Object and Buffered Writer to write to CSV (payment and deposit)
+        * General Ledger Done
+        * Just Reports Left
 
      */
 }
