@@ -1,8 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -24,6 +22,7 @@ public class FinancialTracker {
         boolean running = true;
 
         while (running) {
+            // Transaction Home Screen
             System.out.println("\nWelcome to TransactionApp");
             System.out.println("----------------------------------------");
             System.out.println("Choose an option by entering one of the corresponding letters: ");
@@ -32,7 +31,7 @@ public class FinancialTracker {
             System.out.println("L) Ledger");
             System.out.println("X) Exit");
             System.out.print("Enter Here: ");
-            String input = scanner.nextLine().trim();
+            String input = scanner.nextLine();
             System.out.println("----------------------------------------");
 
             // Switch Case for Menu
@@ -73,27 +72,19 @@ public class FinancialTracker {
                 double amount = Double.parseDouble(parts[4]);
                 allTransactions.add(new Transaction(date, time, description, vendor, amount));
             }
-            // Close Buffered Reader
+            bufferedReader.close();
         } catch (Exception e) {
             System.err.println("ERROR");
         }
-        // This method should load transactions from a file with the given file name.
-        // If the file does not exist, it should be created.
-        // The transactions should be stored in the `transactions` ArrayList.
         // Each line of the file represents a single transaction in the following format:
         // <date>|<time>|<description>|<vendor>|<amount>
         // For example: 2023-04-15|10:13:25|ergonomic keyboard|Amazon|-89.50
         // After reading all the transactions, the file should be closed.
         // If any errors occur, an appropriate error message should be displayed.
-
-
-
     }
 
 
     private static void addDeposit(Scanner scanner) {
-        // This method should prompt the user to enter the date, time, description, vendor, and amount of a deposit.
-        // The user should enter the date and time in the following format: yyyy-MM-dd HH:mm:ss
         try {
             // Deposit Selection Screen
             System.out.println("Deposit Selection Screen");
@@ -116,7 +107,8 @@ public class FinancialTracker {
             // User Time Entry
             LocalTime depositTimeInput = null;
             System.out.print("Please enter time of Deposit (HH:mm:ss): ");
-            while (depositTimeInput == null)
+            while
+                (depositTimeInput == null) {
                 try {
                     String timeInput = scanner.nextLine();
                     // Conversion of String to Time
@@ -124,6 +116,7 @@ public class FinancialTracker {
                 } catch (Exception e) {
                     System.err.print("Entered incorrect time format.\nPlease Enter in format ((HH:mm:ss): ");
                 }
+            }
 
             // User Description Entry
             System.out.print("Please enter invoice description for deposit: ");
@@ -139,6 +132,7 @@ public class FinancialTracker {
             while (amountInput <= 0) {
                 try {
                     amountInput = scanner.nextDouble();
+                    scanner.nextLine();
                     if (amountInput <= 0) {
                         System.out.println("Amount must be greater than 0 please try again: ");
                     }
@@ -147,25 +141,28 @@ public class FinancialTracker {
                     scanner.nextLine(); // scanner eater
                 }
             }
-
-
-            // The amount should be a positive number.
-            // After validating the input, a new `Transaction` object should be created with the entered values.
-            // The new deposit should be added to the `transactions` ArrayList.
-
             Transaction transaction = new Transaction(depositDateInput, depositTimeInput, descriptionInput, vendorInput, amountInput);
             allTransactions.add(transaction);
+            String outputLine = "";
+            outputLine = String.format("%s|%s|%s|%s|%.2f",
+                    transaction.getDate(),
+                    transaction.getTime(),
+                    transaction.getDescription(),
+                    transaction.getVendor(),
+                    transaction.getAmount());
+            // Buffered Writer
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FILE_NAME, true));
+            bufferedWriter.write(outputLine + "\n");
+             bufferedWriter.close();
 
-            String csvTransaction = null;
 
+            System.out.println("You added: " + outputLine);
 
 
 
         } catch (Exception e) {
             System.err.println("Incorrect Input: Returning to Deposit Selection Screen...");
         }
-
-
     }
 
 
