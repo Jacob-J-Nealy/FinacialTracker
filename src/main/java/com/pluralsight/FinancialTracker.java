@@ -168,11 +168,6 @@ public class FinancialTracker {
 
 
     private static void addPayment(Scanner scanner) {
-        // This method should prompt the user to enter the date, time, description, vendor, and amount of a payment.
-        // The user should enter the date and time in the following format: yyyy-MM-dd HH:mm:ss
-        // The amount received should be a positive number then transformed to a negative number.
-        // After validating the input, a new `Transaction` object should be created with the entered values.
-        // The new payment should be added to the `transactions` ArrayList.
 
         try {
             // Payment Selection Screen
@@ -251,7 +246,7 @@ public class FinancialTracker {
 
 
         } catch (Exception e) {
-            System.err.println("Incorrect Input: Returning to Deposit Selection Screen...");
+            System.err.println("Incorrect Input: Returning to Payment Selection Screen...");
         }
     }
 
@@ -260,15 +255,17 @@ public class FinancialTracker {
     private static void ledgerMenu(Scanner scanner) {
         boolean running = true;
         while (running) {
-            System.out.println("Ledger");
-            System.out.println("Choose an option:");
-            System.out.println("A) A`ll");
-            System.out.println("D) Deposits");
-            System.out.println("P) Payments");
-            System.out.println("R) Reports");
-            System.out.println("H) Home");
-
-            String input = scanner.nextLine().trim();
+            System.out.println("Welcome to Ledger Selection Screen");
+            System.out.println("----------------------------------------");
+            System.out.println("Choose an option by entering one of the corresponding letters: ");
+            System.out.println("A) Display All Entries");
+            System.out.println("D) Display Only Deposits");
+            System.out.println("P) Display Only Payments");
+            System.out.println("R) Show Reports");
+            System.out.println("H) Go Back to Transaction Home Screen");
+            System.out.print("Enter Here: ");
+            String input = scanner.nextLine();
+            System.out.println("----------------------------------------");
 
             switch (input.toUpperCase()) {
                 case "A":
@@ -285,26 +282,52 @@ public class FinancialTracker {
                     break;
                 case "H":
                     running = false;
+                    System.out.println("Loading Home Screen...");
+                    continue;
                 default:
-                    System.out.println("Invalid option");
+                    System.err.println("Invalid Option Please try again\n");
                     break;
             }
         }
     }
 
     private static void displayLedger() {
-        // This method should display a table of all transactions in the `transactions` ArrayList.
-        // The table should have columns for date, time, description, vendor, and amount.
+        System.out.println("All Transactions");
+        System.out.println("________________________________________");
+        for (Transaction transaction : allTransactions) {
+            System.out.println();
+            System.out.println(transaction);
+        }
+        System.out.println("________________________________________");
+
     }
 
     private static void displayDeposits() {
-        // This method should display a table of all deposits in the `transactions` ArrayList.
-        // The table should have columns for date, time, description, vendor, and amount.
+        System.out.println("All Deposits");
+        System.out.println("________________________________________");
+        int i = 0;
+        for (Transaction transaction : allTransactions) {
+            if (transaction.getAmount() > 0) {
+                System.out.println(transaction);
+            }
+        }
+        System.out.println("________________________________________");
     }
 
     private static void displayPayments() {
         // This method should display a table of all payments in the `transactions` ArrayList.
         // The table should have columns for date, time, description, vendor, and amount.
+
+        System.out.println("All Payments");
+        System.out.println("________________________________________");
+        int i = 0;
+        for (Transaction transaction : allTransactions) {
+            if (transaction.getAmount() < 0) {
+                System.out.println(transaction);
+            }
+        }
+        System.out.println("________________________________________");
+
     }
 
     // Third Reports Menu
@@ -392,6 +415,7 @@ public class FinancialTracker {
         * Use FileWriter Object and Buffered Writer to write to CSV (payment and deposit)
         * General Ledger Done
         * Just Reports Left
+        O Talk with Raymond about Payments and turning it from a negative to a positive
 
      */
 }
