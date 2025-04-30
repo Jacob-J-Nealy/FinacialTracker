@@ -4,6 +4,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -376,11 +377,10 @@ public class FinancialTracker {
                     // Generate a report for all transactions within the current year,
                     // including the date, time, description, vendor, and amount for each transaction.
 
-
-                    Month currentYear = LocalDate.now().getYear()
-                    System.out.println("Transactions for Previous Month:\n");
+                    int currentYear = LocalDate.now().getYear();
+                    System.out.println("Transactions for Current Year:\n");
                     for (Transaction transaction : allTransactions) {
-                        if (transaction.getDate().getMonth() == lastMonth) {
+                        if (transaction.getDate().getYear() == currentYear) {
                             System.out.println(transaction);
                         }
                     }
@@ -391,6 +391,17 @@ public class FinancialTracker {
                 case "4":
                     // Generate a report for all transactions within the previous year,
                     // including the date, time, description, vendor, and amount for each transaction.
+
+                    int lastYear = LocalDate.now().getYear();
+                    System.out.println("Transactions for Current Year:\n");
+                    for (Transaction transaction : allTransactions) {
+                        if (transaction.getDate().getYear() == currentYear) {
+                            System.out.println(transaction);
+                        }
+                    }
+                    System.out.println("______________________________________________");
+                    break;
+
                 case "5":
                     // Prompt the user to enter a vendor name, then generate a report for all transactions
                     // with that vendor, including the date, time, description, vendor, and amount for each transaction.
