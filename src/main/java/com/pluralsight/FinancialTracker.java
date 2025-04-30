@@ -22,6 +22,7 @@ public class FinancialTracker {
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern(TIME_FORMAT);
 
     public static void main(String[] args) {
+        System.out.println("Loading Application...");
         loadTransactions(FILE_NAME);
         boolean running = true;
 
@@ -54,17 +55,17 @@ public class FinancialTracker {
     }
 
     public static String transactionsHomeScreenDisplay() {
-        System.out.println("\nWelcome to TransactionApp");
-        System.out.println("----------------------------------------");
-        System.out.println("Choose an option by entering one of the corresponding letters: ");
-        System.out.println("D) Add Deposit");
-        System.out.println("P) Make Payment (Debit)");
-        System.out.println("L) Ledger");
-        System.out.println("X) Exit");
-        System.out.print("Enter Here: ");
-        String input = scanner.nextLine();
-        System.out.println("----------------------------------------");
-        return input;
+            System.out.println("\nWelcome to TransactionApp");
+            System.out.println("----------------------------------------");
+            System.out.println("Choose an option by entering one of the corresponding letters: ");
+            System.out.println("D) Add Deposit");
+            System.out.println("P) Make Payment (Debit)");
+            System.out.println("L) Ledger");
+            System.out.println("X) Exit");
+            System.out.print("Enter Here: ");
+            String input = scanner.nextLine();
+            System.out.println("----------------------------------------");
+            return input;
     }
 
     public static void loadTransactions(String fileName) {
@@ -453,12 +454,25 @@ public class FinancialTracker {
 
     Notes with Walter 4.29.25
     ________________________________________________
-        * Extra Bonus to combine Deposit and Payment Method using If Else Statement
-        * Store in the Object in Array List
-        * Use FileWriter Object and Buffered Writer to write to CSV (payment and deposit)
-        * General Ledger Done
-        * Just Reports Left
-        O Talk with Raymond about Payments and turning it from a negative to a positive
+    * Extra Bonus to combine Deposit and Payment Method using If Else Statement
+    * Store in the Object in Array List
+    * Use FileWriter Object and Buffered Writer to write to CSV (payment and deposit)
+    * General Ledger Done
+    * Just Reports Left
+    * Talk with Raymond about Payments and turning it from a negative to a positive
+
+    Notes with Walter 4.30.25
+    ________________________________________________
+    * Sure Months refer only to current year
+    * Make Sure if January it refers to December (conditional statement)
+    * Has to be most recent at top when it prints (.sort)
+    * Ask Raymond about pulling before making custom search
+    * Ask raymond about private static void filterTransactionsByDate(LocalDate startDate, LocalDate endDate) Method
+    * Ask Raymond about Date Time Formatter being included
+
+    Custom
+    Search Vendor Report Menu
+
 
      */
 }
