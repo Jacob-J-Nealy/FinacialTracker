@@ -332,28 +332,38 @@ public class FinancialTracker {
     private static void reportsMenu(Scanner scanner) {
         boolean running = true;
         while (running) {
-            System.out.println("Reports");
-            System.out.println("Choose an option:");
+
+            System.out.println("Reports Selection Screen");
+            System.out.println("----------------------------------------");
+            System.out.println("Choose an option by entering one of the corresponding letters: ");
             System.out.println("1) Month To Date");
             System.out.println("2) Previous Month");
             System.out.println("3) Year To Date");
             System.out.println("4) Previous Year");
             System.out.println("5) Search by Vendor");
             System.out.println("0) Back");
-
+            System.out.print("Enter Here: ");
             String input = scanner.nextLine().trim();
+            System.out.println("----------------------------------------");
+
 
             switch (input) {
                 case "1":
-                    // Generate a report for all transactions within the current month,
-                    // including the date, time, description, vendor, and amount for each transaction.
                     Month currentMonth = LocalDate.now().getMonth();
+                    System.out.println("Transactions for Current Month:");
                     for (Transaction transaction : allTransactions) {
-                        if (transaction.getDate() = LocalDate.now().getMonth() )
+                        if (transaction.getDate().getMonth() == currentMonth) {
+                            System.out.println(transaction);
+                        }
                     }
+                    System.out.println("______________________________________________");
+                    break;
                 case "2":
                     // Generate a report for all transactions within the previous month,
                     // including the date, time, description, vendor, and amount for each transaction.
+
+                    
+
                 case "3":
                     // Generate a report for all transactions within the current year,
                     // including the date, time, description, vendor, and amount for each transaction.
@@ -367,7 +377,7 @@ public class FinancialTracker {
                 case "0":
                     running = false;
                 default:
-                    System.out.println("Invalid option");
+                    System.out.println("Invalid option\n");
                     break;
             }
         }
