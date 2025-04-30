@@ -11,7 +11,7 @@ public class Transaction {
     private double amount;
 
     // Constructor
-    public Transaction(LocalDate date, LocalTime time, String vendor, String description, double amount) {
+    public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         this.date = date;
         this.time = time;
         this.description = description;
@@ -50,7 +50,7 @@ public class Transaction {
         //transactionBuilder.toString();
 
         // advanced way
-        return String.format("%s|%s|%s|%s|%s", date, time, description, vendor, amount);
+        return String.format("%s|%s|%s|%s|%.2f", date, time, description, vendor, amount);
     }
 
     // Getters & Setters

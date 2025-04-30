@@ -15,10 +15,11 @@ public class FinancialTracker {
     private static final String FILE_NAME = "transactions.csv";
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String TIME_FORMAT = "HH:mm:ss";
+    public static Scanner scanner = new Scanner(System.in);
+
+    // Didn't need to use Date & Time Formatters because Array List and transactions file is already in ISO format
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT);
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern(TIME_FORMAT);
-
-    public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         loadTransactions(FILE_NAME);
@@ -26,16 +27,7 @@ public class FinancialTracker {
 
         while (running) {
             // Transaction Home Screen
-            System.out.println("\nWelcome to TransactionApp");
-            System.out.println("----------------------------------------");
-            System.out.println("Choose an option by entering one of the corresponding letters: ");
-            System.out.println("D) Add Deposit");
-            System.out.println("P) Make Payment (Debit)");
-            System.out.println("L) Ledger");
-            System.out.println("X) Exit");
-            System.out.print("Enter Here: ");
-            String input = scanner.nextLine();
-            System.out.println("----------------------------------------");
+            transactionsHomeScreenDisplay();
 
             // Switch Case for Menu
             switch (input.toUpperCase()) {
@@ -58,6 +50,20 @@ public class FinancialTracker {
         }
 
         scanner.close();
+    }
+
+    public static void transactionsHomeScreenDisplay() {
+        System.out.println("\nWelcome to TransactionApp");
+        System.out.println("----------------------------------------");
+        System.out.println("Choose an option by entering one of the corresponding letters: ");
+        System.out.println("D) Add Deposit");
+        System.out.println("P) Make Payment (Debit)");
+        System.out.println("L) Ledger");
+        System.out.println("X) Exit");
+        System.out.print("Enter Here: ");
+        String input = scanner.nextLine();
+        System.out.println("----------------------------------------");
+        return String input;
     }
 
     public static void loadTransactions(String fileName) {
@@ -85,7 +91,6 @@ public class FinancialTracker {
         // After reading all the transactions, the file should be closed.
         // If any errors occur, an appropriate error message should be displayed.
     }
-
 
     private static void addDeposit(Scanner scanner) {
         try {
@@ -126,7 +131,7 @@ public class FinancialTracker {
             String descriptionInput = scanner.nextLine();
 
             // User Vendor Entry
-            System.out.print("Please enter the name of person depositing that item was purchased from: ");
+            System.out.print("Please enter the name of person depositing or vendor depositing income: ");
             String vendorInput = scanner.nextLine();
 
             // User Amount Entry
@@ -169,9 +174,7 @@ public class FinancialTracker {
         }
     }
 
-
     private static void addPayment(Scanner scanner) {
-
         try {
             // Payment Selection Screen
             System.out.println("Payment Selection Screen");
@@ -253,8 +256,6 @@ public class FinancialTracker {
         }
     }
 
-
-    // Second
     private static void ledgerMenu(Scanner scanner) {
         boolean running = true;
         while (running) {
@@ -347,7 +348,7 @@ public class FinancialTracker {
             String input = scanner.nextLine().trim();
             System.out.println("----------------------------------------");
 
-
+            //Switch Case Menu for different filters
             switch (input) {
                 case "1":
                     Month currentMonth = LocalDate.now().getMonth();
@@ -394,19 +395,18 @@ public class FinancialTracker {
                     break;
 
                 case "5":
-                    // Prompt the user to enter a vendor name, then generate a report for all transactions
-                    // with that vendor, including the date, time, description, vendor, and amount for each transaction.
                     filterTransactionsByVendor("vendor");
+                    break;
 
                 case "0":
                     running = false;
+
                 default:
                     System.out.println("Invalid option\n");
                     break;
             }
         }
     }
-
 
     private static void filterTransactionsByDate(LocalDate startDate, LocalDate endDate) {
         // This method filters the transactions by date and prints a report to the console.
@@ -417,12 +417,8 @@ public class FinancialTracker {
     }
 
     private static void filterTransactionsByVendor(String vendor) {
-        // This method filters the transactions by vendor and prints a report to the console.
-        // It takes one parameter: vendor, which represents the name of the vendor to filter by.
-        // The method loops through the transactions list and checks each transaction's vendor name against the specified vendor name.
-        // Transactions with a matching vendor name are printed to the console.
         // If no transactions match the specified vendor name, the method prints a message indicating that there are no results.
-        System.out.print("Please Enter Vendor name: ");
+        System.out.print("Please Enter Vendor Name: ");
         vendor = scanner.nextLine();
 
         for (Transaction transaction : allTransactions) {
@@ -431,6 +427,7 @@ public class FinancialTracker {
             }
         }
         System.out.println("______________________________________________");
+
     }
 
     /*
