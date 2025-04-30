@@ -363,7 +363,7 @@ public class FinancialTracker {
                     // including the date, time, description, vendor, and amount for each transaction.
 
                     Month lastMonth = LocalDate.now().minusMonths(1).getMonth();
-                    System.out.println("Transactions for Previous Month:");
+                    System.out.println("Transactions for Previous Month:\n");
                     for (Transaction transaction : allTransactions) {
                         if (transaction.getDate().getMonth() == lastMonth) {
                             System.out.println(transaction);
@@ -375,6 +375,18 @@ public class FinancialTracker {
                 case "3":
                     // Generate a report for all transactions within the current year,
                     // including the date, time, description, vendor, and amount for each transaction.
+
+
+                    Month currentYear = LocalDate.now().getYear()
+                    System.out.println("Transactions for Previous Month:\n");
+                    for (Transaction transaction : allTransactions) {
+                        if (transaction.getDate().getMonth() == lastMonth) {
+                            System.out.println(transaction);
+                        }
+                    }
+                    System.out.println("______________________________________________");
+                    break;
+
 
                 case "4":
                     // Generate a report for all transactions within the previous year,
