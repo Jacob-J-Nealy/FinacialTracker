@@ -106,9 +106,8 @@ public class FinancialTracker {
             while (depositDateInput == null) {
                 try {
                     String dateInput = scanner.nextLine();
-                    // Conversion of String to Date
-                    // Format Date Here use date time formatter
-                    depositDateInput = LocalDate.parse(dateInput);
+                    // Conversion of String to Date with variable format
+                    depositDateInput = LocalDate.parse(dateInput, DATE_FORMATTER);
                 } catch (Exception e) {
                     System.err.print("Entered incorrect date format.\nPlease Enter in format (YYYY-MM-dd): ");
                 }
@@ -121,8 +120,8 @@ public class FinancialTracker {
                 (depositTimeInput == null) {
                 try {
                     String timeInput = scanner.nextLine();
-                    // Conversion of String to Time
-                    depositTimeInput = LocalTime.parse(timeInput);
+                    // Conversion of String to Time with variable format
+                    depositTimeInput = LocalTime.parse(timeInput, TIME_FORMATTER);
                 } catch (Exception e) {
                     System.err.print("Entered incorrect time format.\nPlease Enter in format ((HH:mm:ss): ");
                 }
@@ -245,6 +244,7 @@ public class FinancialTracker {
                     transaction.getAmount());
             // Buffered Writer
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FILE_NAME, true));
+            // change outline to transaction because to String
             bufferedWriter.write(outputLine + "\n");
             bufferedWriter.close();
 
@@ -354,9 +354,10 @@ public class FinancialTracker {
             switch (input) {
                 case "1":
                     Month currentMonth = LocalDate.now().getMonth();
+                    int currentYear = LocalDate.now().getYear();
                     System.out.println("Transactions for Current Month:");
                     for (Transaction transaction : allTransactions) {
-                        if (transaction.getDate().getMonth() == currentMonth) {
+                        if (transaction.getDate().getMonth() == currentMonth && transaction.getDate().getYear() == currentYear) {
                             System.out.println(transaction);
                         }
                     }
@@ -375,10 +376,10 @@ public class FinancialTracker {
                     break;
 
                 case "3":
-                    int currentYear = LocalDate.now().getYear();
+                    int currentYearCase3 = LocalDate.now().getYear();
                     System.out.println("Transactions for Current Year:\n");
                     for (Transaction transaction : allTransactions) {
-                        if (transaction.getDate().getYear() == currentYear) {
+                        if (transaction.getDate().getYear() == currentYearCase3) {
                             System.out.println(transaction);
                         }
                     }
@@ -416,6 +417,7 @@ public class FinancialTracker {
         // The method loops through the transactions list and checks each transaction's date against the date range.
         // Transactions that fall within the date range are printed to the console.
         // If no transactions fall within the date range, the method prints a message indicating that there are no results.
+        // Is After & Is Before
     }
 
     private static void filterTransactionsByVendor(String vendor) {
@@ -469,9 +471,15 @@ public class FinancialTracker {
     * Ask Raymond about pulling before making custom search
     * Ask raymond about private static void filterTransactionsByDate(LocalDate startDate, LocalDate endDate) Method
     * Ask Raymond about Date Time Formatter being included
+    * Ask Raymond how to start Custom Search Option
+    * Work on toString Display
 
     Custom
     Search Vendor Report Menu
+
+    Notes with Raymond 4.30.25
+    ______________________________
+    * Goals: Finish Report; User Stories; README
 
 
      */
