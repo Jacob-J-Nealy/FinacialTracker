@@ -3,6 +3,7 @@ package com.pluralsight;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -315,9 +316,6 @@ public class FinancialTracker {
     }
 
     private static void displayPayments() {
-        // This method should display a table of all payments in the `transactions` ArrayList.
-        // The table should have columns for date, time, description, vendor, and amount.
-
         System.out.println("All Payments");
         System.out.println("________________________________________");
         int i = 0;
@@ -349,6 +347,10 @@ public class FinancialTracker {
                 case "1":
                     // Generate a report for all transactions within the current month,
                     // including the date, time, description, vendor, and amount for each transaction.
+                    Month currentMonth = LocalDate.now().getMonth();
+                    for (Transaction transaction : allTransactions) {
+                        if (transaction.getDate() = LocalDate.now().getMonth() )
+                    }
                 case "2":
                     // Generate a report for all transactions within the previous month,
                     // including the date, time, description, vendor, and amount for each transaction.
