@@ -141,9 +141,10 @@ public class FinancialTracker {
                     scanner.nextLine(); // scanner eater
                 }
             }
+
             Transaction transaction = new Transaction(depositDateInput, depositTimeInput, descriptionInput, vendorInput, amountInput);
             allTransactions.add(transaction);
-            String outputLine = "";
+            String outputLine;
             outputLine = String.format("%s|%s|%s|%s|%.2f",
                     transaction.getDate(),
                     transaction.getTime(),
@@ -185,6 +186,7 @@ public class FinancialTracker {
                 try {
                     String dateInput = scanner.nextLine();
                     // Conversion of String to Date
+                    // Format Date Here use date time formatter
                     paymentDateInput = LocalDate.parse(dateInput);
                 } catch (Exception e) {
                     System.err.print("Entered incorrect date format.\nPlease Enter in format (YYYY-MM-dd): ");
@@ -194,39 +196,62 @@ public class FinancialTracker {
             // User Time Entry
             LocalTime paymentTimeInput = null;
             System.out.print("Please enter time of Payment (HH:mm:ss): ");
-            while (paymentTimeInput == null)
+            while
+            (paymentTimeInput == null) {
                 try {
                     String timeInput = scanner.nextLine();
                     // Conversion of String to Time
                     paymentTimeInput = LocalTime.parse(timeInput);
                 } catch (Exception e) {
-                    System.err.print("Entered incorrect time format.\nPlease Enter in format ((HH:mm:ss): ");
+                    System.err.print("Entered incorrect time format.\nPlease Enter in format (HH:mm:ss): ");
                 }
+            }
 
             // User Description Entry
-            System.out.print("Please enter name of item paid for: ");
+            System.out.print("Please enter name of Payment: ");
             String descriptionInput = scanner.nextLine();
 
             // User Vendor Entry
-            System.out.print("Please enter the vendor name: ");
+            System.out.print("Please enter the Vendor name for Payment: ");
             String vendorInput = scanner.nextLine();
 
-            // User Amount Entry (COME BACK
+            // User Amount Entry
             double amountInput = 0;
-            System.out.print("Please enter a negative payment amount : ");
+            System.out.print("Please enter the amount for payment: ");
             while (amountInput >= 0) {
                 try {
                     amountInput = scanner.nextDouble();
+                    scanner.nextLine();
                     if (amountInput >= 0) {
-                        System.out.println("Amount must be less than 0 remember to add negative. please try again: ");
+                        System.err.println("Amount must be less than 0 please put negative in front of payment value: ");
                     }
                 } catch (Exception e) {
                     System.err.print("Invalid Input. Please enter amount here: ");
                     scanner.nextLine(); // scanner eater
                 }
             }
+
+            Transaction transaction = new Transaction(paymentDateInput, paymentTimeInput, descriptionInput, vendorInput, amountInput);
+            allTransactions.add(transaction);
+            String outputLine;
+            outputLine = String.format("%s|%s|%s|%s|%.2f",
+                    transaction.getDate(),
+                    transaction.getTime(),
+                    transaction.getDescription(),
+                    transaction.getVendor(),
+                    transaction.getAmount());
+            // Buffered Writer
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FILE_NAME, true));
+            bufferedWriter.write(outputLine + "\n");
+            bufferedWriter.close();
+
+
+            System.out.println("You added: " + outputLine);
+
+
+
         } catch (Exception e) {
-            System.err.println("ERROR");
+            System.err.println("Incorrect Input: Returning to Deposit Selection Screen...");
         }
     }
 
