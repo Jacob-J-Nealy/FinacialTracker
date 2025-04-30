@@ -27,7 +27,7 @@ public class FinancialTracker {
 
         while (running) {
             // Transaction Home Screen
-            transactionsHomeScreenDisplay();
+            String input = transactionsHomeScreenDisplay();
 
             // Switch Case for Menu
             switch (input.toUpperCase()) {
@@ -41,6 +41,7 @@ public class FinancialTracker {
                     ledgerMenu(scanner);
                     break;
                 case "X":
+                    System.out.println("Closing Application...");
                     running = false;
                     break;
                 default:
@@ -52,7 +53,7 @@ public class FinancialTracker {
         scanner.close();
     }
 
-    public static void transactionsHomeScreenDisplay() {
+    public static String transactionsHomeScreenDisplay() {
         System.out.println("\nWelcome to TransactionApp");
         System.out.println("----------------------------------------");
         System.out.println("Choose an option by entering one of the corresponding letters: ");
@@ -63,7 +64,7 @@ public class FinancialTracker {
         System.out.print("Enter Here: ");
         String input = scanner.nextLine();
         System.out.println("----------------------------------------");
-        return String input;
+        return input;
     }
 
     public static void loadTransactions(String fileName) {
