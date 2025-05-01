@@ -4,6 +4,8 @@ import java.io.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class FinancialTracker {
@@ -19,6 +21,7 @@ public class FinancialTracker {
     public static void main(String[] args) {
         System.out.println("Loading Application...");
         loadTransactions(FILE_NAME);
+        Collections.sort(allTransactions, Comparator.comparing(Transaction::getDate).thenComparing(Transaction::getTime).reversed());
         boolean running = true;
 
         while (running) {
@@ -293,10 +296,9 @@ public class FinancialTracker {
     }
 
     private static void displayLedger() {
-        System.out.println("All Transactions");
+        System.out.println("All Transactions (newest to oldest)");
         System.out.println("________________________________________");
         for (Transaction transaction : allTransactions) {
-            System.out.println();
             System.out.println(transaction);
         }
         System.out.println("________________________________________");
@@ -337,7 +339,7 @@ public class FinancialTracker {
             System.out.println("Choose an option by entering one of the corresponding letters: ");
             System.out.println("1) Month To Date");
             System.out.println("2) Previous Month");
-            System.out.println("3) Year To Date");
+            System.out.println("3) Year To Date (This Year)");
             System.out.println("4) Previous Year");
             System.out.println("5) Search by Vendor");
             System.out.println("0) Back");
@@ -354,7 +356,7 @@ public class FinancialTracker {
                     break;
                 case "2":
                     LocalDate case2StartDate = LocalDate.now().minusMonths(1).withDayOfMonth(1);
-                    LocalDate case2EndDate   = LocalDate.now();
+                    LocalDate case2EndDate   = LocalDate.now().withDayOfMonth(1).minusDays(1);
                     filterTransactionsByDate(case2StartDate, case2EndDate);
                     break;
                 case "3":
@@ -366,6 +368,7 @@ public class FinancialTracker {
                     LocalDate case4StartDate = LocalDate.now().minusYears(1).withDayOfYear(1);
                     LocalDate case4EndDate = LocalDate.now().minusYears(1);
                     filterTransactionsByDate(case4StartDate, case4EndDate);
+                    break;
                 case "5":
                     filterTransactionsByVendor("vendor");
                     break;
@@ -381,12 +384,6 @@ public class FinancialTracker {
     }
 
     private static void filterTransactionsByDate(LocalDate startDate, LocalDate endDate) {
-        // This method filters the transactions by date and prints a report to the console.
-        // It takes two parameters: startDate and endDate, which represent the range of dates to filter by.
-        // The method loops through the transactions list and checks each transaction's date against the date range.
-        // Transactions that fall within the date range are printed to the console.
-        // If no transactions fall within the date range, the method prints a message indicating that there are no results.
-        // Is After & Is Before
 
         System.out.println("Filtering Transactions...\n");
 
@@ -395,8 +392,8 @@ public class FinancialTracker {
                     (transaction.getDate().isEqual(endDate) || transaction.getDate().isBefore(endDate))) {
                 System.out.println(transaction);
             }
-            System.out.println("_________________________________________________________________________");
         }
+        System.out.println("_________________________________________________________________________");
 
 
     }
@@ -427,7 +424,7 @@ public class FinancialTracker {
             -
         * Finish Add Deposit and Make Payments
 
-    Notes with Raymond 4.28.25
+    Notes for Next Capstone
     ___________________________________________
         * Mid-Thursday Capstone should be done
         * We are going to work with Dates
@@ -439,9 +436,6 @@ public class FinancialTracker {
     ________________________________________________
     * Extra Bonus to combine Deposit and Payment Method using If Else Statement
     * Store in the Object in Array List
-    * Use FileWriter Object and Buffered Writer to write to CSV (payment and deposit)
-    * General Ledger Done
-    * Just Reports Left
     * Talk with Raymond about Payments and turning it from a negative to a positive
 
     Notes with Walter 4.30.25
