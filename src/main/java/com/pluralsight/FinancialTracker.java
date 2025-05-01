@@ -1,10 +1,7 @@
 package com.pluralsight;
 
 import java.io.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Month;
-import java.time.Year;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -351,43 +348,24 @@ public class FinancialTracker {
             //Switch Case Menu for different filters
             switch (input) {
                 case "1":
-                    LocalDate startDate = LocalDate.now().withDayOfMonth(1);
-                    LocalDate endDate   = LocalDate.now();
-                    filterTransactionsByDate(startDate, endDate);
+                    LocalDate case1StartDate = LocalDate.now().withDayOfMonth(1);
+                    LocalDate case1EndDate   = LocalDate.now();
+                    filterTransactionsByDate(case1StartDate, case1EndDate);
                     break;
                 case "2":
-                    Month lastMonth = LocalDate.now().minusMonths(1).getMonth();
-                    System.out.println("Transactions for Previous Month:\n");
-                    for (Transaction transaction : allTransactions) {
-                        if (transaction.getDate().getMonth() == lastMonth) {
-                            System.out.println(transaction);
-                        }
-                    }
-                    System.out.println("______________________________________________");
+                    LocalDate case2StartDate = LocalDate.now().minusMonths(1).withDayOfMonth(1);
+                    LocalDate case2EndDate   = LocalDate.now();
+                    filterTransactionsByDate(case2StartDate, case2EndDate);
                     break;
-
                 case "3":
-                    int currentYearCase3 = LocalDate.now().getYear();
-                    System.out.println("Transactions for Current Year:\n");
-                    for (Transaction transaction : allTransactions) {
-                        if (transaction.getDate().getYear() == currentYearCase3) {
-                            System.out.println(transaction);
-                        }
-                    }
-                    System.out.println("______________________________________________");
+                    LocalDate case3StartDate = LocalDate.now().withDayOfYear(1);
+                    LocalDate case3EndDate = LocalDate.now();
+                    filterTransactionsByDate(case3StartDate, case3EndDate);
                     break;
-
                 case "4":
-                    int lastYear = LocalDate.now().minusYears(1).getYear();
-                    System.out.println("Transactions from Last Year:\n");
-                    for (Transaction transaction : allTransactions) {
-                        if (transaction.getDate().getYear() == lastYear) {
-                            System.out.println(transaction);
-                        }
-                    }
-                    System.out.println("______________________________________________");
-                    break;
-
+                    LocalDate case4StartDate = LocalDate.now().minusYears(1).withDayOfYear(1);
+                    LocalDate case4EndDate = LocalDate.now().minusYears(1);
+                    filterTransactionsByDate(case4StartDate, case4EndDate);
                 case "5":
                     filterTransactionsByVendor("vendor");
                     break;
@@ -417,6 +395,7 @@ public class FinancialTracker {
                     (transaction.getDate().isEqual(endDate) || transaction.getDate().isBefore(endDate))) {
                 System.out.println(transaction);
             }
+            System.out.println("_________________________________________________________________________");
         }
 
 
