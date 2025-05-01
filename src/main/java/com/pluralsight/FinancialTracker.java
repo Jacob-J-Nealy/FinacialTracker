@@ -418,6 +418,17 @@ public class FinancialTracker {
         // Transactions that fall within the date range are printed to the console.
         // If no transactions fall within the date range, the method prints a message indicating that there are no results.
         // Is After & Is Before
+
+        System.out.println("Filtering transaction from" + startDate + "to" + endDate);
+
+        for (Transaction transaction : allTransactions) {
+            if ((transaction.getDate().isEqual(startDate)   || transaction.getDate().isAfter (startDate)) &&
+                    (transaction.getDate().isEqual(endDate) || transaction.getDate().isBefore(endDate))) {
+                System.out.println(transaction);
+            }
+        }
+
+
     }
 
     private static void filterTransactionsByVendor(String vendor) {
@@ -470,9 +481,10 @@ public class FinancialTracker {
     * Has to be most recent at top when it prints (.sort)
     * Ask Raymond about pulling before making custom search
     * Ask raymond about private static void filterTransactionsByDate(LocalDate startDate, LocalDate endDate) Method
-    * Ask Raymond about Date Time Formatter being included
     * Ask Raymond how to start Custom Search Option
     * Work on toString Display
+    * Fix Add Payments
+    * Remove
 
     Custom
     Search Vendor Report Menu
