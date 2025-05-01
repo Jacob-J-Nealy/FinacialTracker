@@ -355,16 +355,21 @@ public class FinancialTracker {
             //Switch Case Menu for different filters
             switch (input) {
                 case "1":
-                    Month currentMonth = LocalDate.now().getMonth();
-                    int currentYear = LocalDate.now().getYear();
-                    System.out.println("Transactions for Current Month:");
-                    for (Transaction transaction : allTransactions) {
-                        if (transaction.getDate().getMonth() == currentMonth && transaction.getDate().getYear() == currentYear) {
-                            System.out.println(transaction);
-                        }
-                    }
-                    System.out.println("______________________________________________");
-                    break;
+                    LocalDate startDate;
+                    LocalDate endDate;
+
+
+
+//                    Month currentMonth = LocalDate.now().getMonth();
+//                    int currentYear = LocalDate.now().getYear();
+//                    System.out.println("Transactions for Current Month:");
+//                    for (Transaction transaction : allTransactions) {
+//                        if (transaction.getDate().getMonth() == currentMonth && transaction.getDate().getYear() == currentYear) {
+//                            System.out.println(transaction);
+//                        }
+//                    }
+//                    System.out.println("______________________________________________");
+//                    break;
 
                     case "2":
                     Month lastMonth = LocalDate.now().minusMonths(1).getMonth();
