@@ -9,7 +9,6 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class FinancialTracker {
-
     private static ArrayList<Transaction> allTransactions = new ArrayList<Transaction>();
     private static final String FILE_NAME = "transactions.csv";
     private static final String DATE_FORMAT = "yyyy-MM-dd";
@@ -71,18 +70,13 @@ public class FinancialTracker {
         } catch (Exception e) {
             System.err.println("ERROR");
         }
-        // Each line of the file represents a single transaction in the following format:
-        // <date>|<time>|<description>|<vendor>|<amount>
-        // For example: 2023-04-15|10:13:25|ergonomic keyboard|Amazon|-89.50
-        // After reading all the transactions, the file should be closed.
-        // If any errors occur, an appropriate error message should be displayed.
     }
 
     private static void addDeposit(Scanner scanner) {
         try {
             // Deposit Selection Screen
             System.out.println("Deposit Selection Screen");
-            System.out.println("----------------------------------------");
+            System.out.println("______________________________________________");
 
             // User Date Input with try/catch & loop if user doesn't enter correct input
             LocalDate depositDateInput = null;
@@ -137,20 +131,12 @@ public class FinancialTracker {
 
             Transaction transaction = new Transaction(depositDateInput, depositTimeInput, descriptionInput, vendorInput, amountInput);
             allTransactions.add(transaction);
-            String outputLine;
-            outputLine = String.format("%s|%s|%s|%s|%.2f",
-                    transaction.getDate(),
-                    transaction.getTime(),
-                    transaction.getDescription(),
-                    transaction.getVendor(),
-                    transaction.getAmount());
-            // Buffered Writer
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FILE_NAME, true));
-            bufferedWriter.write(outputLine + "\n");
-             bufferedWriter.close();
+            bufferedWriter.write(transaction + "\n");
+            bufferedWriter.close();
 
 
-            System.out.println("You added: " + outputLine);
+            System.out.println("You added: " + transaction);
 
 
 
@@ -163,7 +149,7 @@ public class FinancialTracker {
         try {
             // Payment Selection Screen
             System.out.println("Payment Selection Screen");
-            System.out.println("----------------------------------------");
+            System.out.println("______________________________________________");
 
             // User Date Input with try/catch & loop if user doesn't enter correct input
             LocalDate paymentDateInput = null;
@@ -203,13 +189,14 @@ public class FinancialTracker {
 
             // User Amount Entry
             double amountInput = 0;
-            System.out.print("Please enter the amount for payment: ");
+            System.out.print("Please enter the Amount for Payment: ");
             while (amountInput >= 0) {
                 try {
                     amountInput = scanner.nextDouble();
+                    amountInput *= -1;
                     scanner.nextLine();
                     if (amountInput >= 0) {
-                        System.err.println("Amount must be less than 0 please put negative in front of payment value: ");
+                        System.err.println("Please remove negative from payment value: ");
                     }
                 } catch (Exception e) {
                     System.err.print("Invalid Input. Please enter amount here: ");
@@ -220,20 +207,20 @@ public class FinancialTracker {
             Transaction transaction = new Transaction(paymentDateInput, paymentTimeInput, descriptionInput, vendorInput, amountInput);
             allTransactions.add(transaction);
             String outputLine;
-            outputLine = String.format("%s|%s|%s|%s|%.2f",
-                    transaction.getDate(),
-                    transaction.getTime(),
-                    transaction.getDescription(),
-                    transaction.getVendor(),
-                    transaction.getAmount());
+//            outputLine = String.format("%s|%s|%s|%s|%.2f",
+//                    transaction.getDate(),
+//                    transaction.getTime(),
+//                    transaction.getDescription(),
+//                    transaction.getVendor(),
+//                    transaction.getAmount());
             // Buffered Writer
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FILE_NAME, true));
             // change outline to transaction because to String
-            bufferedWriter.write(outputLine + "\n");
+            bufferedWriter.write(transaction + "\n");
             bufferedWriter.close();
 
 
-            System.out.println("You added: " + outputLine);
+            System.out.println("You added: " + transaction);
 
 
 
@@ -246,7 +233,7 @@ public class FinancialTracker {
         boolean running = true;
         while (running) {
             System.out.println("Welcome to Ledger Selection Screen");
-            System.out.println("----------------------------------------");
+            System.out.println("______________________________________________");
             System.out.println("Choose an option by entering one of the corresponding letters: ");
             System.out.println("A) Display All Entries");
             System.out.println("D) Display Only Deposits");
@@ -255,7 +242,7 @@ public class FinancialTracker {
             System.out.println("H) Go Back to Transaction Home Screen");
             System.out.print("Enter Here: ");
             String input = scanner.nextLine();
-            System.out.println("----------------------------------------");
+            System.out.println("______________________________________________");
 
             switch (input.toUpperCase()) {
                 case "A":
@@ -282,8 +269,9 @@ public class FinancialTracker {
     }
 
     public static String displayTransactionsHomeScreen() {
+        Collections.sort(allTransactions, Comparator.comparing(Transaction::getDate).thenComparing(Transaction::getTime).reversed());
         System.out.println("\nWelcome to TransactionApp");
-        System.out.println("----------------------------------------");
+        System.out.println("______________________________________________");
         System.out.println("Choose an option by entering one of the corresponding letters: ");
         System.out.println("D) Add Deposit");
         System.out.println("P) Make Payment (Debit)");
@@ -291,42 +279,43 @@ public class FinancialTracker {
         System.out.println("X) Exit");
         System.out.print("Enter Here: ");
         String input = scanner.nextLine();
-        System.out.println("----------------------------------------");
+        System.out.println("______________________________________________");
         return input;
     }
 
     private static void displayLedger() {
         System.out.println("All Transactions (newest to oldest)");
-        System.out.println("________________________________________");
+        System.out.println("______________________________________________");
         for (Transaction transaction : allTransactions) {
             System.out.println(transaction);
+
         }
-        System.out.println("________________________________________");
+        System.out.println("______________________________________________");
 
     }
 
     private static void displayDeposits() {
         System.out.println("All Deposits");
-        System.out.println("________________________________________");
+        System.out.println("______________________________________________");
         int i = 0;
         for (Transaction transaction : allTransactions) {
             if (transaction.getAmount() > 0) {
                 System.out.println(transaction);
             }
         }
-        System.out.println("________________________________________");
+        System.out.println("______________________________________________");
     }
 
     private static void displayPayments() {
         System.out.println("All Payments");
-        System.out.println("________________________________________");
+        System.out.println("______________________________________________");
         int i = 0;
         for (Transaction transaction : allTransactions) {
             if (transaction.getAmount() < 0) {
                 System.out.println(transaction);
             }
         }
-        System.out.println("________________________________________");
+        System.out.println("______________________________________________");
 
     }
 
@@ -335,7 +324,7 @@ public class FinancialTracker {
         while (running) {
 
             System.out.println("Reports Selection Screen");
-            System.out.println("----------------------------------------");
+            System.out.println("______________________________________________");
             System.out.println("Choose an option by entering one of the corresponding letters: ");
             System.out.println("1) Month To Date");
             System.out.println("2) Previous Month");
@@ -345,7 +334,7 @@ public class FinancialTracker {
             System.out.println("0) Back");
             System.out.print("Enter Here: ");
             String input = scanner.nextLine().trim();
-            System.out.println("----------------------------------------");
+            System.out.println("______________________________________________");
 
             //Switch Case Menu for different filters
             switch (input) {
@@ -393,7 +382,7 @@ public class FinancialTracker {
                 System.out.println(transaction);
             }
         }
-        System.out.println("_________________________________________________________________________");
+        System.out.println("______________________________________________");
 
 
     }
@@ -414,49 +403,14 @@ public class FinancialTracker {
 
     /*
 
-    Notes with Walter 4.28.25
-    __________________________________________
-    First Problem:  Saving transaction to csv file (payments and deposits)
-    Second Problem: Displaying Ledger Properly
-        * In real Life you start with User Stories
-        * Work on ReadMe throughout Progress
-            - Changing constantly
-            -
-        * Finish Add Deposit and Make Payments
-
-    Notes for Next Capstone
-    ___________________________________________
-        * Mid-Thursday Capstone should be done
-        * We are going to work with Dates
-        * User Stories should take half a day (2 Hours)
-        * Hint: In Transaction date should be Local
-        * Do ReadME at the END
-
-    Notes with Walter 4.29.25
-    ________________________________________________
-    * Extra Bonus to combine Deposit and Payment Method using If Else Statement
-    * Store in the Object in Array List
-    * Talk with Raymond about Payments and turning it from a negative to a positive
-
-    Notes with Walter 4.30.25
-    ________________________________________________
-    * Sure Months refer only to current year
-    * Make Sure if January it refers to December (conditional statement)
-    * Has to be most recent at top when it prints (.sort)
-    * Ask Raymond about pulling before making custom search
-    * Ask raymond about private static void filterTransactionsByDate(LocalDate startDate, LocalDate endDate) Method
-    * Ask Raymond how to start Custom Search Option
-    * Work on toString Display
-    * Fix Add Payments
-    * Remove
-
-    Custom
-    Search Vendor Report Menu
-
-    Notes with Raymond 4.30.25
-    ______________________________
-    * Goals: Finish Report; User Stories; README
-
+    Notes with Walter & Raymond 5.1.25
+    _____________________________________
+    * Goals: Finish Report; Finish User Stories & README
+    * Goals: Custom Search after 11:59am
+    * Send Details to Walter for Presentation to be there
+    * Remind Durante as well
+    * Possible if getting exceeding or higher can become student tutor and get certification
+    * What else can I do to get an exceeding/ what can I do to get a Leading
 
      */
 }
