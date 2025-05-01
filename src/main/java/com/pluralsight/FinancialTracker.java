@@ -28,9 +28,9 @@ public class FinancialTracker {
 
         while (running) {
             // Transaction Home Screen
-            String input = transactionsHomeScreenDisplay();
+            String input = displayTransactionsHomeScreen();
 
-            // Switch Case for Menu
+            // Switch Case for Home Screen Menu
             switch (input.toUpperCase()) {
                 case "D":
                     addDeposit(scanner);
@@ -54,19 +54,7 @@ public class FinancialTracker {
         scanner.close();
     }
 
-    public static String transactionsHomeScreenDisplay() {
-            System.out.println("\nWelcome to TransactionApp");
-            System.out.println("----------------------------------------");
-            System.out.println("Choose an option by entering one of the corresponding letters: ");
-            System.out.println("D) Add Deposit");
-            System.out.println("P) Make Payment (Debit)");
-            System.out.println("L) Ledger");
-            System.out.println("X) Exit");
-            System.out.print("Enter Here: ");
-            String input = scanner.nextLine();
-            System.out.println("----------------------------------------");
-            return input;
-    }
+
 
     public static void loadTransactions(String fileName) {
 
@@ -295,6 +283,20 @@ public class FinancialTracker {
                     break;
             }
         }
+    }
+
+    public static String displayTransactionsHomeScreen() {
+        System.out.println("\nWelcome to TransactionApp");
+        System.out.println("----------------------------------------");
+        System.out.println("Choose an option by entering one of the corresponding letters: ");
+        System.out.println("D) Add Deposit");
+        System.out.println("P) Make Payment (Debit)");
+        System.out.println("L) Ledger");
+        System.out.println("X) Exit");
+        System.out.print("Enter Here: ");
+        String input = scanner.nextLine();
+        System.out.println("----------------------------------------");
+        return input;
     }
 
     private static void displayLedger() {
