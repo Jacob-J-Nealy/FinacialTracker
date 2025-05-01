@@ -16,8 +16,6 @@ public class FinancialTracker {
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String TIME_FORMAT = "HH:mm:ss";
     public static Scanner scanner = new Scanner(System.in);
-
-    // Didn't need to use Date & Time Formatters because Array List and transactions file is already in ISO format
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT);
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern(TIME_FORMAT);
 
@@ -53,8 +51,6 @@ public class FinancialTracker {
 
         scanner.close();
     }
-
-
 
     public static void loadTransactions(String fileName) {
 
@@ -355,23 +351,11 @@ public class FinancialTracker {
             //Switch Case Menu for different filters
             switch (input) {
                 case "1":
-                    LocalDate startDate;
-                    LocalDate endDate;
-
-
-
-//                    Month currentMonth = LocalDate.now().getMonth();
-//                    int currentYear = LocalDate.now().getYear();
-//                    System.out.println("Transactions for Current Month:");
-//                    for (Transaction transaction : allTransactions) {
-//                        if (transaction.getDate().getMonth() == currentMonth && transaction.getDate().getYear() == currentYear) {
-//                            System.out.println(transaction);
-//                        }
-//                    }
-//                    System.out.println("______________________________________________");
-//                    break;
-
-                    case "2":
+                    LocalDate startDate = LocalDate.now().withDayOfMonth(1);
+                    LocalDate endDate   = LocalDate.now();
+                    filterTransactionsByDate(startDate, endDate);
+                    break;
+                case "2":
                     Month lastMonth = LocalDate.now().minusMonths(1).getMonth();
                     System.out.println("Transactions for Previous Month:\n");
                     for (Transaction transaction : allTransactions) {
@@ -426,7 +410,7 @@ public class FinancialTracker {
         // If no transactions fall within the date range, the method prints a message indicating that there are no results.
         // Is After & Is Before
 
-        System.out.println("Filtering transaction from" + startDate + "to" + endDate);
+        System.out.println("Filtering Transactions...\n");
 
         for (Transaction transaction : allTransactions) {
             if ((transaction.getDate().isEqual(startDate)   || transaction.getDate().isAfter (startDate)) &&
