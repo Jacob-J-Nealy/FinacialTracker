@@ -18,6 +18,7 @@ public class FinancialTracker {
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern(TIME_FORMAT);
 
     public static void main(String[] args) {
+        // Loads and Sorts the Transactions Array List in the beginning
         System.out.println("Loading Application...");
         loadTransactions(FILE_NAME);
         Collections.sort(allTransactions, Comparator.comparing(Transaction::getDate).thenComparing(Transaction::getTime).reversed());
@@ -56,7 +57,8 @@ public class FinancialTracker {
         String line;
 
         try {
-            // This splits each line of the csv file
+            /* This splits each line of the csv file by the '|' and sorts into an array list called 'allTransactions'
+                to display later for the user */
             BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_NAME));
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\\|");
@@ -85,21 +87,21 @@ public class FinancialTracker {
             while (depositDateInput == null) {
                 try {
                     String dateInput = scanner.nextLine();
-                    // Conversion of String to Date with variable format
+                    // Conversion of String to Date with date formatter
                     depositDateInput = LocalDate.parse(dateInput, DATE_FORMATTER);
                 } catch (Exception e) {
                     System.err.print("Entered incorrect date format.\nPlease Enter in format (YYYY-MM-dd): ");
                 }
             }
 
-            // User Time Entry
+            // User Time Entry with try/catch & loop if user doesn't enter correct input
             LocalTime depositTimeInput = null;
             System.out.print("Please enter time of Deposit (HH:mm:ss): ");
             while
                 (depositTimeInput == null) {
                 try {
                     String timeInput = scanner.nextLine();
-                    // Conversion of String to Time with variable format
+                    // Conversion of String to Time with time formatter
                     depositTimeInput = LocalTime.parse(timeInput, TIME_FORMATTER);
                 } catch (Exception e) {
                     System.err.print("Entered incorrect time format.\nPlease Enter in format ((HH:mm:ss): ");
@@ -114,7 +116,7 @@ public class FinancialTracker {
             System.out.print("Please enter the name of person depositing or vendor depositing income: ");
             String vendorInput = scanner.nextLine();
 
-            // User Amount Entry
+            // User Amount Entry with try/catch & loop if user doesn't enter correct input
             double amountInput = 0;
             System.out.print("Please enter the amount to deposit: ");
             while (amountInput <= 0) {
@@ -160,7 +162,7 @@ public class FinancialTracker {
                     String dateInput = scanner.nextLine();
                     // Conversion of String to Date
                     // Format Date Here use date time formatter
-                    paymentDateInput = LocalDate.parse(dateInput);
+                    paymentDateInput = LocalDate.parse(dateInput, DATE_FORMATTER);
                 } catch (Exception e) {
                     System.err.print("Entered incorrect date format.\nPlease Enter in format (YYYY-MM-dd): ");
                 }
