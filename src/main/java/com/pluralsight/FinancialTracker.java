@@ -405,35 +405,40 @@ public class FinancialTracker {
         String csStartDate = scanner.nextLine();
         LocalDate csStartDateParsed = LocalDate.parse(csStartDate, DATE_FORMATTER);
 
-        System.out.print("Please Enter End Date press 'enter' to skip (YYYY-MM-dd): ");
+        System.out.print("Please Enter End Date press or 'enter' to skip (YYYY-MM-dd): ");
         String csEndDate = scanner.nextLine();
         LocalDate csEndDateParsed = LocalDate.parse(csEndDate, DATE_FORMATTER);
         for (Transaction transaction : allTransactions) {
             if ((transaction.getDate().isEqual(csStartDateParsed)   || transaction.getDate().isAfter (csStartDateParsed)) &&
                     (transaction.getDate().isEqual(csEndDateParsed) || transaction.getDate().isBefore(csEndDateParsed))) {
-                //System.out.println(transaction);
             }
         }
-        System.out.println("______________________________________________");
 
-        System.out.print("Please Enter Saved Description or Invoice Name press 'enter' to skip: ");
+        System.out.print("Please Enter Saved Description or Invoice Name. press 'enter' to skip: ");
         String csDescription = scanner.nextLine();
         for (Transaction transaction : allTransactions) {
             if (transaction.getDescription().equalsIgnoreCase(csDescription));
         }
 
-        System.out.print("Please Enter Saved Amount press 'enter' to skip: ");
+        System.out.print("Please Enter Saved Vendor Name or press 'enter' to skip: ");
+        for (Transaction transaction : allTransactions) {
+            if (transaction.getVendor().equalsIgnoreCase(transaction.getVendor())) {
+            }
+        }
+
+        System.out.print("Please Enter Saved Amount. press 'enter' to skip: ");
         double csAmount = scanner.nextDouble();
         scanner.nextLine(); //scanner eater
+        for (Transaction transaction : allTransactions) {
+            if (transaction.getAmount() == csAmount);
+        }
 
         for (Transaction transaction : allTransactions) {
             if (transaction.getVendor().equalsIgnoreCase(transaction.getVendor())) {
                 System.out.println(transaction);
             }
         }
-        System.out.println("______________________________________________");
-
-
+        //System.out.println(transaction);
     }
 
     /*
