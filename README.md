@@ -15,23 +15,24 @@ They served as a roadmap, helping me stay focused on creating features that woul
 Each story has details for how I wanted to build an application intuitive, functional, and user-friendly experience. 
 I'm excited to share how these User Stories guided the evolution of the application and brought the vision to life!
 
-- As a user, I would like a clean and simple home screen where I can easily Add Deposits, Make Payments, View the Ledger, and Exit the Application; 
-so that I can quickly access the specific part of the tool I need without confusion, save time navigating, and manage my finances more efficiently.
+- Home Screen: As a user, I would like a clean and simple home screen where I can easily Add Deposits, Make Payments, View the Ledger, 
+and Exit the Application; so that I can quickly access the specific part of the tool I need without confusion, save time navigating, 
+and manage my finances more efficiently.
 
-- As a user, I would like the Add Deposits option to prompt me for relevant information—such as date, amount, description, and vendor— 
-and automatically store this data in a structured CSV file; so that I can maintain an organized digital record, 
-easily retrieve and review my financial entries later, and ensure comprehensive tracking of all deposit activity over time..
+- Exit: As a User I would a simple exit button on the home screen to close out the application when I am done with it.
 
-- As a user, I would like the Make Payments option to ask me for my debit information and save it for later use
-so that I can have better ease of use long term.
+- Add Deposits Button: As a user, I would like the Add Deposits option to prompt me for relevant information—such as date, amount, 
+description, and vendor—and automatically store this data in a structured CSV file; so that I can maintain an organized digital record, 
+easily retrieve and review my financial entries later, and ensure comprehensive tracking of all deposit activity over time.
 
-- As a user, I would a simple exit button on the home screen to close out the application when I am done with it
+- Make Payment Option: As a User I would like the Make Payments option to be simple and easy to use so that I can input information
+with little user mistake and save it for later use so, I can have better ease of use long term.
 
-- As a user, I would like a Ledger Option that displays all my newest entries first with the option to 
-  * Display All Entries; 
-  * Display Deposits Only; 
-  * Display Payments Only; 
-  * Display Reports: which allows me to run a custom search by specific attributes
+- Ledger: As a User I would like a Ledger Option that displays all my newest entries first with the option to Display All Entries; 
+Display Deposits Only; Display Payments Only; and Display Reports which allows me to run a custom search by specific attributes.
+
+- Login: As a User I would like a simple login screen that ask me for my username and password to differentiate my transactions 
+from another username so that I can be the only one to view my transactions
 
 ## Setup (Generated)
 Instructions on how to set up and run the project using IntelliJ IDEA.
@@ -56,8 +57,6 @@ Follow these steps to get your application running within IntelliJ IDEA:
 - Any additional libraries or frameworks used in the project.
 
 ## Demo
-
-Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
 
 ![Application Screenshot](C:\Users\jacob\Desktop\pluralsight\capstones\FinancialTracker\Screenshot 2025-05-02 044618.png)
 ![Application Screenshot](C:\Users\jacob\Desktop\pluralsight\capstones\FinancialTracker\Screenshot 2025-05-02 045033.png)
