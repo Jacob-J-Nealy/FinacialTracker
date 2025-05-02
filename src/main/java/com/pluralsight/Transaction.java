@@ -19,23 +19,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    // toString OG Way
-    /* //toString (Normal Generated toString)
-    @Override
-    public String toString() {
-        return "Transaction{" +
-                "date='" + date + '\'' +
-                ", time='" + time + '\'' +
-                ", description='" + description + '\'' +
-                ", vendor='" + vendor + '\'' +
-                ", amount=" + amount +
-                '}';
-    } */
 
-    // String Builder ToString Strategy (Tiffany Obi)
     @Override
     public String toString() {
 
+        // Transaction Builder String Builder
         StringBuilder transactionBuilder = new StringBuilder();
         transactionBuilder.append(date);
         transactionBuilder.append("|");
@@ -46,10 +34,6 @@ public class Transaction {
         transactionBuilder.append(vendor);
         transactionBuilder.append("|");
         transactionBuilder.append(amount);
-
-        //transactionBuilder.toString();
-
-        // advanced way
         return String.format("%s|%s|%s|%s|%.2f", date, time, description, vendor, amount);
     }
 

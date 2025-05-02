@@ -33,12 +33,10 @@ so that I can have better ease of use long term.
   * Display Payments Only; 
   * Display Reports: which allows me to run a custom search by specific attributes
 
-## Setup
-
+## Setup (Generated)
 Instructions on how to set up and run the project using IntelliJ IDEA.
 
 ### Prerequisites
-
 - IntelliJ IDEA: Ensure you have IntelliJ IDEA installed, which you can download from [here](https://www.jetbrains.com/idea/download/).
 - Java SDK: Make sure Java SDK is installed and configured in IntelliJ.
 
@@ -67,14 +65,16 @@ Include screenshots or GIFs that show your application in action. Use tools like
 
 Outline potential future enhancements or functionalities you might consider adding:
 
-- Additional feature to be developed.
+- Custom Transaction Search
 - Improvement of current functionalities.
+- Try/Catches for all User input errors
+- User Login to Display only certain information from csv
 
 ## Resources
 
 List resources such as tutorials, articles, or documentation that helped you during the project.
 
-- [Java Programming Tutorial](https://www.example.com)
+- [ChatGPT](https://chatgpt.com/)
 - [Effective Java](https://www.example.com)
 
 ## Team Members
@@ -84,7 +84,9 @@ List resources such as tutorials, articles, or documentation that helped you dur
 
 ## Thanks
 
-Express gratitude towards those who provided help, guidance, or resources:
+Shout Out to my Potato Instructor Raymond Mourn for his french fry guidance
+Shout out to Walter Donnellan (My Tutor) for sacrificing his lunch breaks and extra time to tutor me
+Shoutout Adam Jessie the Debug King for explaining complex topics we didn't learn yet in class
 
 - Thank you to [Mentor's Name] for continuous support and guidance.
 - A special thanks to all teammates for their dedication and teamwork.
