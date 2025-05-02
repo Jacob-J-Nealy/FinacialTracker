@@ -117,8 +117,10 @@ Outline potential future enhancements or functionalities you might consider addi
 ## Thanks
 
 Shout Out to my Potato Instructor Raymond Mourn for his french fry guidance
+
 Shout out to Walter Donnellan (My Tutor) for sacrificing his lunch breaks and extra time to tutor me
-Shoutout Adam Jessie the Debug King for explaining complex topics we didn't learn yet in class
+
+Shoutout Tiffany Obi for help during Breaks
 
 - A special thanks to all classmates for their dedication and teamwork.
 - #FullStackFryers
