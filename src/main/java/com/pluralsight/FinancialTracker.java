@@ -408,36 +408,33 @@ public class FinancialTracker {
         System.out.print("Please Enter End Date press or 'enter' to skip (YYYY-MM-dd): ");
         String csEndDate = scanner.nextLine();
         LocalDate csEndDateParsed = LocalDate.parse(csEndDate, DATE_FORMATTER);
-        for (Transaction transaction : allTransactions) {
-            if ((transaction.getDate().isEqual(csStartDateParsed)   || transaction.getDate().isAfter (csStartDateParsed)) &&
-                    (transaction.getDate().isEqual(csEndDateParsed) || transaction.getDate().isBefore(csEndDateParsed))) {
-            }
-        }
 
         System.out.print("Please Enter Saved Description or Invoice Name. press 'enter' to skip: ");
         String csDescription = scanner.nextLine();
-        for (Transaction transaction : allTransactions) {
-            if (transaction.getDescription().equalsIgnoreCase(csDescription));
-        }
 
         System.out.print("Please Enter Saved Vendor Name or press 'enter' to skip: ");
-        for (Transaction transaction : allTransactions) {
-            if (transaction.getVendor().equalsIgnoreCase(transaction.getVendor())) {
-            }
-        }
+        String csVendor = scanner.nextLine();
 
         System.out.print("Please Enter Saved Amount. press 'enter' to skip: ");
         double csAmount = scanner.nextDouble();
         scanner.nextLine(); //scanner eater
-        for (Transaction transaction : allTransactions) {
-            if (transaction.getAmount() == csAmount);
-        }
 
-        for (Transaction transaction : allTransactions) {
-            if (transaction.getVendor().equalsIgnoreCase(transaction.getVendor())) {
-                System.out.println(transaction);
+        for (Transaction csTransaction : allTransactions) {
+            boolean matchDates = ((csTransaction.getDate().isEqual(csStartDateParsed) || csTransaction.getDate().isAfter(csStartDateParsed)) &&
+                    (csTransaction.getDate().isEqual(csEndDateParsed) || csTransaction.getDate().isBefore(csEndDateParsed)));
+
+            boolean matchDescription = (csTransaction.getDescription().equalsIgnoreCase(csDescription));
+
+            boolean matchVendor = (csTransaction.getVendor().equalsIgnoreCase(csVendor));
+
+            boolean matchAmount = (csTransaction.getAmount() == csAmount);
+
+            if (matchDates && matchDescription && matchVendor && matchAmount) {
+                System.out.println(csTransaction);
             }
         }
+
+
         //System.out.println(transaction);
     }
 
