@@ -84,12 +84,11 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 ## Technologies Used
 
-- Java: Mention the version you are using.
-- Any additional libraries or frameworks used in the project.
+- Java 17 Maven.
 
 ## Demo
 
-![Application Screenshot](C:\Users\jacob\Desktop\pluralsight\capstones\FinancialTracker\Screenshot 2025-05-02 044618.png)
+![image alt](C:\Users\jacob\Desktop\pluralsight\capstones\FinancialTracker\Screenshot 2025-05-02 044618.png)
 ![Application Screenshot](C:\Users\jacob\Desktop\pluralsight\capstones\FinancialTracker\Screenshot 2025-05-02 045033.png)
 ![Application Screenshot](C:\Users\jacob\Desktop\pluralsight\capstones\FinancialTracker\Screenshot 2025-05-02 045201.png)
 ![Application Screenshot](C:\Users\jacob\Desktop\pluralsight\capstones\FinancialTracker\Screenshot 2025-05-02 045308.png)
