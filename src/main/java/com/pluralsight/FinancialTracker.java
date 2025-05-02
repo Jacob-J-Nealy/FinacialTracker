@@ -56,6 +56,7 @@ public class FinancialTracker {
         String line;
 
         try {
+            // This splits each line of the csv file
             BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_NAME));
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\\|");
@@ -399,7 +400,16 @@ public class FinancialTracker {
     }
 
     private static void doCustomSearch() {
+        /* This is my Custom Search Bonus to save you some time Raymond this program only works when:
+            * user inputs values correctly first try
+            * user does not hit enter to skip
+
+           I did not have enough time to finish this code but, I would fix it by:
+            * adding while loop with a try catch similar to my addDeposits Method
+            * adding a " || null for the different matching case                                       */ //Note for Raymond
         System.out.println("Loading Custom Search...\n");
+        System.out.println("Welcome to Custom Search Bonus!");
+        System.out.println("______________________________________________");
 
         System.out.print("Please Enter Start Date or press 'enter' to skip (YYYY-MM-dd): ");
         String csStartDate = scanner.nextLine();
@@ -429,13 +439,11 @@ public class FinancialTracker {
 
             boolean matchAmount = (csTransaction.getAmount() == csAmount);
 
+            System.out.println("\nCustom Search has found...");
             if (matchDates && matchDescription && matchVendor && matchAmount) {
                 System.out.println(csTransaction);
             }
         }
-
-
-        //System.out.println(transaction);
     }
 
     /*
