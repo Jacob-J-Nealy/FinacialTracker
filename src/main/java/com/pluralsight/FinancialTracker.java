@@ -206,13 +206,6 @@ public class FinancialTracker {
 
             Transaction transaction = new Transaction(paymentDateInput, paymentTimeInput, descriptionInput, vendorInput, amountInput);
             allTransactions.add(transaction);
-            String outputLine;
-//            outputLine = String.format("%s|%s|%s|%s|%.2f",
-//                    transaction.getDate(),
-//                    transaction.getTime(),
-//                    transaction.getDescription(),
-//                    transaction.getVendor(),
-//                    transaction.getAmount());
             // Buffered Writer
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FILE_NAME, true));
             // change outline to transaction because to String
@@ -239,6 +232,7 @@ public class FinancialTracker {
             System.out.println("D) Display Only Deposits");
             System.out.println("P) Display Only Payments");
             System.out.println("R) Reports Selection Screen");
+            System.out.println("C) Do a Custom Search");
             System.out.println("H) Go Back to Transaction Home Screen");
             System.out.print("Enter Here: ");
             String input = scanner.nextLine();
@@ -256,6 +250,9 @@ public class FinancialTracker {
                     break;
                 case "R":
                     reportsMenu(scanner);
+                    break;
+                case "C":
+                    doCustomSearch();
                     break;
                 case "H":
                     running = false;
@@ -398,6 +395,44 @@ public class FinancialTracker {
             }
         }
         System.out.println("______________________________________________");
+
+    }
+
+    private static void doCustomSearch() {
+        System.out.println("Loading Custom Search...\n");
+
+        System.out.print("Please Enter Start Date or press 'enter' to skip (YYYY-MM-dd): ");
+        String csStartDate = scanner.nextLine();
+        LocalDate csStartDateParsed = LocalDate.parse(csStartDate, DATE_FORMATTER);
+
+        System.out.print("Please Enter End Date press 'enter' to skip (YYYY-MM-dd): ");
+        String csEndDate = scanner.nextLine();
+        LocalDate csEndDateParsed = LocalDate.parse(csEndDate, DATE_FORMATTER);
+        for (Transaction transaction : allTransactions) {
+            if ((transaction.getDate().isEqual(csStartDateParsed)   || transaction.getDate().isAfter (csStartDateParsed)) &&
+                    (transaction.getDate().isEqual(csEndDateParsed) || transaction.getDate().isBefore(csEndDateParsed))) {
+                //System.out.println(transaction);
+            }
+        }
+        System.out.println("______________________________________________");
+
+        System.out.print("Please Enter Saved Description or Invoice Name press 'enter' to skip: ");
+        String csDescription = scanner.nextLine();
+        for (Transaction transaction : allTransactions) {
+            if (transaction.getDescription().equalsIgnoreCase(csDescription));
+        }
+
+        System.out.print("Please Enter Saved Amount press 'enter' to skip: ");
+        double csAmount = scanner.nextDouble();
+        scanner.nextLine(); //scanner eater
+
+        for (Transaction transaction : allTransactions) {
+            if (transaction.getVendor().equalsIgnoreCase(transaction.getVendor())) {
+                System.out.println(transaction);
+            }
+        }
+        System.out.println("______________________________________________");
+
 
     }
 
