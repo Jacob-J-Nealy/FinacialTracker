@@ -88,16 +88,15 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 ## Demo
 
-![image alt](C:\Users\jacob\Desktop\pluralsight\capstones\FinancialTracker\Screenshot 2025-05-02 044618.png)
-![Application Screenshot](C:\Users\jacob\Desktop\pluralsight\capstones\FinancialTracker\Screenshot 2025-05-02 045033.png)
-![Application Screenshot](C:\Users\jacob\Desktop\pluralsight\capstones\FinancialTracker\Screenshot 2025-05-02 045201.png)
-![Application Screenshot](C:\Users\jacob\Desktop\pluralsight\capstones\FinancialTracker\Screenshot 2025-05-02 045308.png)
-![Application Screenshot](C:\Users\jacob\Desktop\pluralsight\capstones\FinancialTracker\Screenshot 2025-05-02 045455.png)
-![Application Screenshot](C:\Users\jacob\Desktop\pluralsight\capstones\FinancialTracker\Screenshot 2025-05-02 045841.png)
-![Application Screenshot](Screenshot 2025-05-02 050019.png)
-![Application Screenshot](Screenshot 2025-05-02 050105.png)
-![Application Screenshot](Screenshot 2025-05-02 050122.png)
-
+![image alt](https://github.com/Jacob-J-Nealy/FinancialTracker/blob/master/Screenshot%202025-05-02%20045201.png)
+![image alt](https://github.com/Jacob-J-Nealy/FinancialTracker/blob/master/Screenshot%202025-05-02%20045033.png)
+![image alt](https://github.com/Jacob-J-Nealy/FinancialTracker/blob/master/Screenshot%202025-05-02%20044618.png)
+![image alt](https://github.com/Jacob-J-Nealy/FinancialTracker/blob/master/Screenshot%202025-05-02%20045308.png)
+![image alt](https://github.com/Jacob-J-Nealy/FinancialTracker/blob/master/Screenshot%202025-05-02%20045455.png)
+![image alt](https://github.com/Jacob-J-Nealy/FinancialTracker/blob/master/Screenshot%202025-05-02%20045622.png)
+![image alt](https://github.com/Jacob-J-Nealy/FinancialTracker/blob/master/Screenshot%202025-05-02%20050019.png)
+![image alt](https://github.com/Jacob-J-Nealy/FinancialTracker/blob/master/Screenshot%202025-05-02%20050105.png)
+![image alt](https://github.com/Jacob-J-Nealy/FinancialTracker/blob/master/Screenshot%202025-05-02%20050122.png)
 ## Future Work
 
 Outline potential future enhancements or functionalities you might consider adding:
