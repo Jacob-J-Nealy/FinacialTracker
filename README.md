@@ -37,6 +37,37 @@ from another username so that I can be the only one to view my transactions
 ## Setup (Generated)
 Instructions on how to set up and run the project using IntelliJ IDEA.
 
+1. Open IntelliJ IDEA
+   Launch IntelliJ.
+
+On the welcome screen, click "New Project" or "Open" if you already have the folder.
+
+2. Create or Open a Java Project
+   If creating new:
+
+Choose "Java".
+
+Make sure SDK is selected (download one if not).
+
+Click Next > Finish.
+
+If opening an existing project:
+
+Go to File > Open and select your project folder.
+
+3. Add a New Java Class (if needed)
+   Right-click src > New > Java Class
+
+Name it Main (or your preferred name).
+
+4. Write or Paste Your Code
+   Paste your public static void main(String[] args) method in the class.
+
+5. Run the Program
+   Click the green ▶ Run button near your main() method, or
+
+Right-click the file > Run 'Main.main()'
+
 ### Prerequisites
 - IntelliJ IDEA: Ensure you have IntelliJ IDEA installed, which you can download from [here](https://www.jetbrains.com/idea/download/).
 - Java SDK: Make sure Java SDK is installed and configured in IntelliJ.
