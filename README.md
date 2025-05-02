@@ -70,17 +70,13 @@ Outline potential future enhancements or functionalities you might consider addi
 - Try/Catches for all User input errors
 - User Login to Display only certain information from csv
 
-## Resources
-
-List resources such as tutorials, articles, or documentation that helped you during the project.
 
 - [ChatGPT](https://chatgpt.com/)
 - [Effective Java](https://www.example.com)
 
 ## Team Members
 
-- **Name 1** - Specific contributions or roles.
-- **Name 2** - Specific contributions or roles.
+- **Jacob Nealy** - Main Creator
 
 ## Thanks
 
@@ -88,6 +84,7 @@ Shout Out to my Potato Instructor Raymond Mourn for his french fry guidance
 Shout out to Walter Donnellan (My Tutor) for sacrificing his lunch breaks and extra time to tutor me
 Shoutout Adam Jessie the Debug King for explaining complex topics we didn't learn yet in class
 
-- Thank you to [Mentor's Name] for continuous support and guidance.
-- A special thanks to all teammates for their dedication and teamwork.
+- A special thanks to all classmates for their dedication and teamwork.
+- #FullStackFryers
+- #SigmaData
  
